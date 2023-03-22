@@ -23,7 +23,7 @@ step 3. start all sub services(sub graphs)
 npm run start-sub-services
 ```
 
-step 4. start gateway(super graph) & start clients (
+step 4. start gateway(super graph) & start clients
 
 - gateway: http://localhost:4000/graphql
 - vue-client:http://localhost:3000

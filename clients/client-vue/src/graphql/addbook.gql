@@ -1,0 +1,12 @@
+#import './bookfragment.gql'
+
+mutation AddBook($input: bookInput!) {
+  addBook(input: $input) {
+    code
+    success
+    message
+    book {
+      ...book
+    }
+  }
+}

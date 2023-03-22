@@ -1,0 +1,61 @@
+#graphql
+extend schema
+  @link(
+    url: "https://specs.apollo.dev/federation/v2.0"
+    import: ["@key", "@shareable"]
+  )
+scalar Date
+# Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
+interface MutationResponse {
+  code: String!
+  success: Boolean!
+  message: String!
+}
+type BookMutationResponse implements MutationResponse {
+  code: String!
+  success: Boolean!
+  message: String!
+  book: Book
+}
+# This Book type has two fields: title and author
+type Book @key(fields: "id") {
+  id: ID!
+  title: String! # returns a String
+  author: Author! # returns an Author
+  createTime: Date!
+}
+type Author @key(fields: "id") {
+  id: ID!
+  name: String!
+}
+type User @key(fields: "id") {
+  id: ID!
+  username: String @shareable
+  Books: [Book]
+}
+
+union SearchResult = Book | Author
+
+input bookInput {
+  title: String
+  author: String
+}
+
+# The "Query" type is special: it lists all of the available queries that
+# clients can execute, along with the return type for each. In this
+# case, the "books" query returns an array of zero or more Books (defined above).
+type Query {
+  books: [Book]
+  pageBook(offset: Int, limit: Int): [Book]
+  search(contains: String): [SearchResult!]
+  getBookById(id: ID!): Book
+}
+
+type Mutation {
+  addBook(input: bookInput!): BookMutationResponse
+}
+
+type Subscription {
+  hello: String
+  addBookSub: Book
+}

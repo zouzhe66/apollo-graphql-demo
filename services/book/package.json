@@ -1,0 +1,37 @@
+{
+  "name": "server-book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "exports": "./dist/index.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.4.0",
+    "@apollo/subgraph": "^2.3.5",
+    "@graphql-tools/schema": "^9.0.16",
+    "@types/express": "^4.17.17",
+    "cors": "^2.8.5",
+    "dataloader": "^2.2.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "graphql": "^16.6.0",
+    "graphql-subscriptions": "^2.0.0",
+    "graphql-tag": "^2.12.6",
+    "graphql-type-json": "^0.3.2",
+    "graphql-ws": "^5.12.0",
+    "lowdb": "^3.0.0",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "ws": "^8.12.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.1",
+    "typescript": "^4.9.5"
+  }
+}

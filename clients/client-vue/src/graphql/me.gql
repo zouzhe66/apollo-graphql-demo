@@ -1,0 +1,10 @@
+#import './bookfragment.gql'
+query Me {
+  me {
+    id
+    username
+    Books {
+      ...book
+    }
+  }
+}

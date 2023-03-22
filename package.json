@@ -1,10 +1,20 @@
 {
-  "name": "root",
+  "name": "apollo-graphql-demo",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "scripts": {
+    "service-subgraph-book": "npm start --prefix services/book",
+    "service-subgraph-user": "npm start --prefix services/user",
+    "start-gateway": "npm start --prefix services/super-graphql",
+    "start-client-vue":  "npm start --prefix clients/client-vue",
+    "start-client-react":  "npm start --prefix clients/client-react",
+    "start-clients":  "concurrently \"npm:start-client-*\"",
+    "start-sub-services": "concurrently \"npm:service-subgraph-*\"",
+    "start": "concurrently \"npm:start-gateway\" \"npm:start-clients\"",
+    "pre-install": "lerna bootstrap"
+  },
   "devDependencies": {
-    "lerna": "^6.5.1"
+    "concurrently": "^7.6.0",
+    "lerna": "^6.5.1",
+    "npm-run-all": "^4.1.5"
   }
 }
